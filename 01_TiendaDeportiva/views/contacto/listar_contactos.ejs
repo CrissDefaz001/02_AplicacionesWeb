@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contactos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<style>
+    #cabecera{
+        background-image: url("https://png.pngtree.com/thumb_back/fw800/back_pic/03/73/66/3557bacbd43bd11.jpg");
+    }
+</style>
+<body>
+<div class="container">
+    <!-- Barra de navegacion -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/contacto/inicio">Inicio</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/cliente/lista">Clientes</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/proveedor/lista">Proveedores</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="../producto/lista">Productos</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="#">Contactos<span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Cabecera -->
+    <div id="cabecera">
+        <br/>
+        <img src="https://365prosports.com/wp-content/uploads/2018/07/logo@1x_round.png"
+             width="90" height="90" alt="ropa" style="position: absolute">
+        <h2 align="center">Politienda 365 ProSports</h2>
+        <h5 align="center">Aplicaciones WEB - GR1</h5><br/>
+    </div>
+
+    <!-- Tabla -->
+    <h2>Contactos</h2>
+    <p>Listando contactos</p>
+    <table class="table table-hover table-sm">
+        <thead class="table-dark">
+        <tr>
+            <th>id</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Mensaje</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% arrayContacto.forEach((contacto)=> { %>
+        <tr>
+            <td><%=contacto.idcontacto %></td>
+            <td><%=contacto.nombre %></td>
+            <td><%=contacto.correo %></td>
+            <td><%=contacto.mensaje %></td>
+        </tr>
+        </tbody>
+        <% }) %>
+    </table>
+</div>
+</body>
+</html>

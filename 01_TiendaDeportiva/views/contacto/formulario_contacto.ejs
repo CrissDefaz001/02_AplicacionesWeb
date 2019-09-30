@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Contacto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<style>
+    #cabecera{
+        background-image: url("https://png.pngtree.com/thumb_back/fw800/back_pic/03/73/66/3557bacbd43bd11.jpg");
+    }
+</style>
+<body>
+    <div class="container">
+        <div id="cabecera">
+            <br/>
+            <img src="https://png.clipart.me/istock/previews/7189/71899299-sportswear-icon.jpg"
+                 width="64" height="64" alt="ropa" style="position: absolute">
+            <h2 align="center">Politienda 365 ProSports</h2>
+            <h5 align="center">Aplicaciones WEB - GR1</h5><br/>
+        </div>
+        <h2>Formulario de Contacto</h2>
+        <form action="crearCont" method="post" class="form-group">
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                <label for="nombre">Nombre Completo:</label>
+                <input id="nombre" name="nombre" type="text" class="form-control" required>
+            </div>
+            <br/>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                <label for="telf">Correo Electrónico:</label>
+                <input id="telf" name="correo" type="email" class="form-control" required>
+            </div>
+            <br/>
+            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6">
+                <label for="telf">Mensaje:</label>
+                <textarea id="telf" name="mensaje" type="text" class="form-control" required></textarea>
+            </div>
+            <br/>
+            <div class="col-lg-4">
+                <button type="reset" class="btn btn-outline-danger">Limpiar</button>
+                <a href="/cliente/lista">
+                    <button type="button" class="btn btn-outline-dark">Cancelar</button>
+                </a>
+                <button class="btn btn-outline-primary">Enviar</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>
