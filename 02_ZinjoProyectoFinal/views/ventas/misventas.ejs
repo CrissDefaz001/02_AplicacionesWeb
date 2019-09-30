@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Ventas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<style>
+
+    body {
+        background-image: url("https://wallup.net/wp-content/uploads/2018/09/27/12847-abstract-placebo-blurred.jpg");
+    }
+    h1 {
+        color: white;
+    }
+    .nav1 {
+        background-image: url("https://i.ibb.co/tY7B5gR/banner2.png");
+        background-repeat: revert;
+    }
+
+</style>
+<body>
+<!-- Barra de navegacion-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark nav1">
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">
+            <img src="https://media.fontis.com.au/media/cms/page/akeneo.png"
+                 width="90" height="90" alt="ropa">
+        </a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 justify-content-center">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">MIS VENTAS<span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        <div class="my-2 my-lg-0">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button"
+                        id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    !Hola! Bienvenida de nuevo <b><%= username %></b>
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="/usuario/editarUsuario/<%= username.toLowerCase() %>">Editar mi
+                        perfil</a>
+                    <a class="dropdown-item" href="/usuario/logout">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Carrusel -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto nav-tabs">
+                <li class="nav-item active">
+                    <a class="navbar-brand" href="#"><b>ZINJO</b></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/home/principal">Inicio<span class="sr-only">(current)</span></a>
+
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/tienda/tienda">Tienda</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/vestido/registrar/<%=username.toLowerCase()%>">Vender</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/ventas/misventas">Mis ventas</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/tienda/contacto">Contáctanos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<div class="container" align="center">
+    <div class="row">
+        <div class="col-auto">
+            <h1 >Publicaciones</h1>
+        </div>
+    </div>
+
+    <div class="table ">
+        <table class="table-dark table-striped  table-bordered  ">
+
+
+            <tr>
+                <th>Color</th>
+                <th>Talla</th>
+                <th>Precio</th>
+                <th>Estado</th>
+                <th>Descripcion</th>
+                <th>Opciones</th>
+            </tr>
+            <% Vestidos.forEach((vestido)=>{ %>
+                <tr>
+                    <td> <%= vestido.color %> </td>
+                    <td> <%= vestido.talla %> </td>
+                    <td> <%= vestido.precio %> </td>
+                    <td> <%= vestido.estado %> </td>
+                    <td> <%= vestido.descripcion %> </td>
+
+
+                    <td>
+
+                        <!--<form action="/libros/editar" method="post">-->
+                        <a href="/vestido/editar/<%= vestido.id %>">
+                            <input id="idedit" name="idedit" type="number" value="<%= vestido.id %>" hidden>
+                            <button class="btn-light">Editar</button>
+                        </a>
+                        <!--</form>-->
+                        <br>
+                        <br>
+                        <form action="/ventas/eliminarpub" method="post">
+                            <input id="idelim" name="idelim" type="number" value="<%= vestido.id %>" hidden>
+                            <button class="btn-light">Borrar</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+
+
+</div>
+
+
+</body>
