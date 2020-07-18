@@ -36,7 +36,7 @@ export class ProveedorController {
     @Post('editar/:idProveedor')
     editarProveedorPost(@Res() res, @Param('idProveedor') idproveedor: string, @Body() proveedor: Proveedor) {
         console.log(proveedor);
-        proveedor.idprov =+idproveedor;
+        proveedor.idprov = parseInt(idproveedor)
         this._proveedorService.actualizarProveedor(proveedor, +idproveedor);
         res.redirect('/proveedor/lista');
     }
@@ -54,8 +54,8 @@ export class ProveedorController {
     }
 
     //eliminar
-    @Post('eliminar')
-    eliminarProveedor(@Res() res, @Body('id') id:string) {
+    @Post('eliminar/:id')
+    eliminarProveedor(@Res() res, @Param('id') id:string) {
         this._proveedorService.eliminarPorId(Number(id));
         res.redirect('/proveedor/lista');
     }

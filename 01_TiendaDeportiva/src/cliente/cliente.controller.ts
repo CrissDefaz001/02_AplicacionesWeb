@@ -36,7 +36,7 @@ export class ClienteController {
     @Post('editar/:idProveedor')
     editarClientePost(@Res() res, @Param('idProveedor') idcliente: string, @Body() cliente: Cliente) {
         console.log(cliente);
-        cliente.idcli =+idcliente;
+        cliente.idcli = parseInt(idcliente)
         this._clienteService.actualizarCliente(cliente, +idcliente);
         res.redirect('/cliente/lista');
     }
@@ -54,8 +54,8 @@ export class ClienteController {
     }
 
     //eliminar
-    @Post('eliminar')
-    eliminarCliente(@Res() res, @Body('id') id:string) {
+    @Post('eliminar/:id')
+    eliminarCliente(@Res() res, @Param('id') id:string) {
         this._clienteService.eliminarPorId(Number(id));
         res.redirect('/cliente/lista');
     }

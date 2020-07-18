@@ -4,7 +4,7 @@ import {NestExpressApplication} from "@nestjs/platform-express";
 import {join} from "path";
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule) as NestExpressApplication;
+  const app = await NestFactory.create(AppModule, {cors: true}) as NestExpressApplication;
   await app.listen(3000);
 
   app.setViewEngine("ejs");
