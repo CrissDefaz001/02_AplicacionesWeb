@@ -25,18 +25,18 @@ export class ProductoController {
         res.redirect('/producto/lista');
     }
 
-    @Get('editar/:idProveedor')
-    editarProducto(@Res() response, @Param('idProveedor') idproducto: string) {
+    @Get('editar/:idProducto')
+    editarProducto(@Res() response, @Param('idProducto') idproducto: string) {
         const productoEncontrado = this._productoService.buscarPorId(+idproducto);
         response.render('productos/editar_producto',{
             producto: productoEncontrado
         })
     }
 
-    @Post('editar/:idProveedor')
-    editarProductoPost(@Res() res, @Param('idProveedor') idproducto: string, @Body() producto: Producto) {
+    @Post('editar/:idProducto')
+    editarProductoPost(@Res() res, @Param('idProducto') idproducto: string, @Body() producto: Producto) {
         console.log(producto);
-        producto.idprod =+idproducto;
+        producto.idprod = parseInt(idproducto)
         this._productoService.actualizarProducto(producto, +idproducto);
         res.redirect('/producto/lista');
     }
@@ -54,9 +54,10 @@ export class ProductoController {
     }
 
     //eliminar
-    @Post('eliminar')
-    eliminarProducto(@Res() res, @Body('id') id:string) {
-        this._productoService.eliminarPorId(Number(id));
+    @Post('eliminar/:idProducto')
+    eliminarProducto(@Res() res, @Param('idProducto') id:string) {
+        console.log(id)
+        this._productoService.eliminarPorId(parseInt(id));
         res.redirect('/producto/lista');
     }
 }

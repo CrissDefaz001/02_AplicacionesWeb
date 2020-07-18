@@ -82,7 +82,6 @@ export class ProductoService {
                 return  producto.idprod === id
             }
         );
-        console.log(indice);
         this.bddProductos.splice(indice,1);
         return this.bddProductos;
     }
